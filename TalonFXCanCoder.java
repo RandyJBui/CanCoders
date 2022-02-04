@@ -1,3 +1,4 @@
+//add appropriate headers.
 public class Robot extends TimedRobot {
 
   private static final byte[] _ports = {0,1,2,3,4,5}; //port numbers in an array
@@ -5,15 +6,12 @@ public class Robot extends TimedRobot {
   private static final byte[] _axis = {1,2,3,4};
  //trying out arrays in order to manage complexity.
 
-final Compressor _compressor = new Compressor(_ports[0]);
-final DoubleSolenoid _dSolenoid = new DoubleSolenoid(_ports[0], _ports[1]); // you can find these values on the pcm
-final DigitalInput _limitSwitch = new DigitalInput(_ports[0]); //this is the DIO port the limit switch is plugged into.
-//put color detector code here
+final Joystick joystick = new Joystick(ports[0]);
 
-final WPI_TalonSRX _motor = new WPI_TalonSRX(_ports[3]); //the motor controller in our testbed, you can find the port number in the Talon Tuner
-final Joystick _joystick = new Joystick(_ports[0]); //joystick, port number is seperate to the compressor or solenoid, you can change this in the driver station.
-
-private static final String turnAuto = "turnAuto"; //used to pick autonomous code in the driverstation
+  final TalonFXConfiguration configs = new TalonFXConfiguration();
+  
+  
+  
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
